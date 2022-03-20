@@ -19,6 +19,28 @@ abstract class AppTextStyles {
     letterSpacing: 0.16,
   );
 
+  static const TextStyle input = TextStyle(
+    fontFamily: secondaryFontFamily,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.5,
+  );
+
+  static const TextStyle label = TextStyle(
+    fontFamily: primaryFontFamily,
+    color: AppColors.primaryColor,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0.4,
+  );
+
+  static const TextStyle caption = TextStyle(
+    fontFamily: primaryFontFamily,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.16,
+  );
+
   static const TextStyle button = TextStyle(
     fontFamily: secondaryFontFamily,
     fontSize: 20,

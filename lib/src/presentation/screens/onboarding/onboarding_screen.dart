@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pizzediaz/src/app/constants/app_colors.dart';
 import 'package:pizzediaz/src/app/constants/app_text_styles.dart';
+import 'package:pizzediaz/src/presentation/screens/login/login_screen.dart';
 import 'package:pizzediaz/src/presentation/widgets/main_button_widget.dart';
 
 final onboardingProvider =
@@ -36,21 +37,21 @@ class OnboardingScreen extends ConsumerWidget {
                   onPageChanged: (value) =>
                       ref.read(onboardingProvider.notifier).updateIndex(value),
                   children: [
-                    OnboardingPage(
+                    _OnboardingPage(
                       title: 'Pedí una pizza',
                       textContent:
                           'Elegí qué pizza vas a cenar esta noche y aboná de la manera que quieras',
                       selectedIndex: selectedIndex,
                       assetName: 'assets/images/onboarding_1.svg',
                     ),
-                    OnboardingPage(
+                    _OnboardingPage(
                       title: 'Esperá tu delivery',
                       textContent:
                           'Nuestros deliverys te lo alcanzarán sin costo de envío a tu domicilio',
                       selectedIndex: selectedIndex,
                       assetName: 'assets/images/onboarding_2.svg',
                     ),
-                    OnboardingPage(
+                    _OnboardingPage(
                       title: 'Disfrutá la comida',
                       textContent: 'Disfrutá de nuestras pizzas en familia',
                       selectedIndex: selectedIndex,
@@ -60,8 +61,9 @@ class OnboardingScreen extends ConsumerWidget {
                 ),
               ),
               MainButton(
-                  text: 'Siguiente',
-                  onPressed: () {
+                text: 'Siguiente',
+                onPressed: () {
+                  if (selectedIndex < 2) {
                     pageController.nextPage(
                       duration: const Duration(milliseconds: 400),
                       curve: Curves.ease,
@@ -69,7 +71,16 @@ class OnboardingScreen extends ConsumerWidget {
                     ref
                         .read(onboardingProvider.notifier)
                         .updateIndex(selectedIndex + 1);
-                  }),
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => const LoginScreen(),
+                      ),
+                    );
+                  }
+                },
+              ),
               const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -95,8 +106,8 @@ class OnboardingScreen extends ConsumerWidget {
   }
 }
 
-class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({
+class _OnboardingPage extends StatelessWidget {
+  const _OnboardingPage({
     Key? key,
     required this.title,
     required this.textContent,
