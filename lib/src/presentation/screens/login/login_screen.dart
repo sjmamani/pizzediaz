@@ -1,7 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pizzediaz/src/app/constants/app_colors.dart';
 import 'package:pizzediaz/src/app/constants/app_text_styles.dart';
+import 'package:pizzediaz/src/presentation/screens/signup/signup_screen.dart';
 import 'package:pizzediaz/src/presentation/widgets/main_button_widget.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -112,6 +114,14 @@ class LoginScreen extends StatelessWidget {
                               color: AppColors.primaryColor,
                               fontWeight: FontWeight.w700,
                             ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = (() => Navigator.push(
+                                    context,
+                                    MaterialPageRoute<void>(
+                                      builder: (BuildContext context) =>
+                                          const SignupScreen(),
+                                    ),
+                                  )),
                           )
                         ],
                       ),

@@ -11,6 +11,13 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w700,
   );
 
+  static const TextStyle h2 = TextStyle(
+    fontFamily: primaryFontFamily,
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    letterSpacing: 0.5,
+  );
+
   static const TextStyle paragraph = TextStyle(
     fontFamily: secondaryFontFamily,
     fontSize: 16,
