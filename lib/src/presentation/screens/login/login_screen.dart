@@ -9,96 +9,119 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double logoDiameter = 240;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      body: Column(
-        children: [
-          ClipPath(
-            clipper: LoginClipPath(),
-            child: Container(
-              color: AppColors.primaryColor,
-              height: MediaQuery.of(context).size.height * 0.5,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 48, 16, 8),
-            child: Form(
-              child: Column(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ClipPath(
+              clipper: LoginClipPath(),
+              child: Stack(
                 children: [
-                  TextFormField(
-                    cursorColor: AppColors.primaryColor,
-                    keyboardType: TextInputType.emailAddress,
-                    style: AppTextStyles.input,
-                    textInputAction: TextInputAction.next,
-                    decoration: const InputDecoration(
-                      labelText: 'Usuario o correo electrónico',
-                    ),
+                  Container(
+                    color: AppColors.primaryColor,
+                    height: height * 0.5,
                   ),
-                  const SizedBox(height: 24),
-                  TextFormField(
-                    obscureText: true,
-                    cursorColor: AppColors.primaryColor,
-                    keyboardType: TextInputType.emailAddress,
-                    style: AppTextStyles.input,
-                    textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(
-                      labelText: 'Contraseña',
-                      suffixIcon: IconButton(
-                        color: AppColors.primaryColor,
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        icon: const Icon(Icons.visibility_off),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      '¿Olvidaste la contraseña?',
-                      style: AppTextStyles.label,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  MainButton(text: 'Iniciar sesión', onPressed: () {}),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'o iniciar sesión con',
-                    style: AppTextStyles.caption,
-                  ),
-                  const SizedBox(height: 6),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset('assets/images/facebook_logo.svg'),
-                      const SizedBox(width: 16),
-                      SvgPicture.asset('assets/images/google_logo.svg'),
-                    ],
-                  ),
-                  const SizedBox(height: 6),
-                  RichText(
-                    text: TextSpan(
-                      text: '¿No tienes una cuenta? ',
-                      style: AppTextStyles.caption.copyWith(
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    top: height * 0.25 - (logoDiameter / 2),
+                    child: Container(
+                      width: logoDiameter,
+                      height: logoDiameter,
+                      decoration: const BoxDecoration(
                         color: Colors.black,
+                        shape: BoxShape.circle,
                       ),
-                      children: [
-                        TextSpan(
-                          text: 'Registrate aquí',
-                          style: AppTextStyles.caption.copyWith(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )
-                      ],
+                      child:
+                          SvgPicture.asset('assets/images/pizzediaz_logo.svg'),
                     ),
                   ),
                 ],
               ),
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 48, 16, 8),
+              child: Form(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      cursorColor: AppColors.primaryColor,
+                      keyboardType: TextInputType.emailAddress,
+                      style: AppTextStyles.input,
+                      textInputAction: TextInputAction.next,
+                      decoration: const InputDecoration(
+                        labelText: 'Usuario o correo electrónico',
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    TextFormField(
+                      obscureText: true,
+                      cursorColor: AppColors.primaryColor,
+                      keyboardType: TextInputType.emailAddress,
+                      style: AppTextStyles.input,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(
+                        labelText: 'Contraseña',
+                        suffixIcon: IconButton(
+                          color: AppColors.primaryColor,
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          icon: const Icon(Icons.visibility_off),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    const Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        '¿Olvidaste la contraseña?',
+                        style: AppTextStyles.label,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    MainButton(text: 'Iniciar sesión', onPressed: () {}),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'o iniciar sesión con',
+                      style: AppTextStyles.caption,
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset('assets/images/facebook_logo.svg'),
+                        const SizedBox(width: 16),
+                        SvgPicture.asset('assets/images/google_logo.svg'),
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    RichText(
+                      text: TextSpan(
+                        text: '¿No tienes una cuenta? ',
+                        style: AppTextStyles.caption.copyWith(
+                          color: Colors.black,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'Registrate aquí',
+                            style: AppTextStyles.caption.copyWith(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
