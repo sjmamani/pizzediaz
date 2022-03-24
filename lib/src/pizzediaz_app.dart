@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizzediaz/src/app/constants/app_colors.dart';
-import 'package:pizzediaz/src/app/constants/app_text_styles.dart';
-import 'package:pizzediaz/src/presentation/screens/onboarding/onboarding_screen.dart';
+import 'package:pizzediaz/src/constants/app_colors.dart';
+import 'package:pizzediaz/src/constants/app_text_styles.dart';
+import 'package:pizzediaz/src/features/onboarding/presentation/onboarding_screen.dart';
 
 class PizzediazApp extends StatelessWidget {
   const PizzediazApp({Key? key}) : super(key: key);

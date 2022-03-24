@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pizzediaz/src/app/constants/app_colors.dart';
+import 'package:pizzediaz/src/constants/app_colors.dart';
 
 abstract class AppTextStyles {
   static const String primaryFontFamily = 'Fira Sans';

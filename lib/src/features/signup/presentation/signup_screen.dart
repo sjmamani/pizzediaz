@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizzediaz/src/app/constants/app_colors.dart';
-import 'package:pizzediaz/src/app/constants/app_text_styles.dart';
-import 'package:pizzediaz/src/presentation/widgets/main_button_widget.dart';
+import 'package:pizzediaz/src/common_widgets/main_button_widget.dart';
+import 'package:pizzediaz/src/constants/app_colors.dart';
+import 'package:pizzediaz/src/constants/app_text_styles.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({Key? key}) : super(key: key);

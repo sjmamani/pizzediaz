@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pizzediaz/src/app/constants/app_colors.dart';
-import 'package:pizzediaz/src/app/constants/app_text_styles.dart';
-import 'package:pizzediaz/src/presentation/screens/login/login_screen.dart';
-import 'package:pizzediaz/src/presentation/widgets/main_button_widget.dart';
+import 'package:pizzediaz/src/common_widgets/main_button_widget.dart';
+import 'package:pizzediaz/src/constants/app_colors.dart';
+import 'package:pizzediaz/src/constants/app_text_styles.dart';
+import 'package:pizzediaz/src/features/login/presentation/login_screen.dart';
 
 final onboardingProvider =
     StateNotifierProvider<OnboardingIndex, int>((ref) => OnboardingIndex());
