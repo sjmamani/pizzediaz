@@ -4,6 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pizzediaz/src/common_widgets/main_button_widget.dart';
 import 'package:pizzediaz/src/constants/app_colors.dart';
 import 'package:pizzediaz/src/constants/app_text_styles.dart';
+import 'package:pizzediaz/src/constants/box_shadows.dart';
+import 'package:pizzediaz/src/features/login/application/login_service.dart';
+import 'package:pizzediaz/src/features/pizzas/presentation/home_screen.dart';
 import 'package:pizzediaz/src/features/signup/presentation/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -33,9 +36,10 @@ class LoginScreen extends StatelessWidget {
                     child: Container(
                       width: logoDiameter,
                       height: logoDiameter,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Colors.black,
                         shape: BoxShape.circle,
+                        boxShadow: [kBoxShadow],
                       ),
                       child:
                           SvgPicture.asset('assets/images/pizzediaz_logo.svg'),
@@ -97,7 +101,20 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         SvgPicture.asset('assets/images/facebook_logo.svg'),
                         const SizedBox(width: 16),
-                        SvgPicture.asset('assets/images/google_logo.svg'),
+                        GestureDetector(
+                          onTap: () {
+                            LoginService.googleSignIn();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) =>
+                                    const HomeScreen(),
+                              ),
+                            );
+                          },
+                          child:
+                              SvgPicture.asset('assets/images/google_logo.svg'),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 6),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzediaz/src/common_widgets/main_button_widget.dart';
+import 'package:pizzediaz/src/common_widgets/secondary_action_button.dart';
 import 'package:pizzediaz/src/constants/app_colors.dart';
 import 'package:pizzediaz/src/constants/app_text_styles.dart';
 
@@ -31,26 +32,9 @@ class SignupScreen extends StatelessWidget {
                           Positioned(
                             left: 16,
                             top: 14,
-                            child: ConstrainedBox(
-                              constraints: const BoxConstraints.tightFor(
-                                width: 34,
-                                height: 30,
-                              ),
-                              child: ElevatedButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: const Icon(
-                                  Icons.arrow_back,
-                                  color: AppColors.primaryColor,
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 4,
-                                  padding: EdgeInsets.zero,
-                                  primary: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                              ),
+                            child: SecondaryActionButton(
+                              icon: Icons.arrow_back,
+                              onPressed: () => Navigator.pop(context),
                             ),
                           ),
                           Positioned(
