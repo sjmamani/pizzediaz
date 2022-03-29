@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:pizzediaz/src/common_widgets/main_button_widget.dart';
 import 'package:pizzediaz/src/constants/app_colors.dart';
 import 'package:pizzediaz/src/constants/app_text_styles.dart';
@@ -40,20 +39,20 @@ class OnboardingScreen extends ConsumerWidget {
                     textContent:
                         'Elegí qué pizza vas a cenar esta noche y aboná de la manera que quieras',
                     selectedIndex: selectedIndex,
-                    assetName: 'assets/images/onboarding_1.svg',
+                    assetName: 'assets/images/onboarding_1.png',
                   ),
                   _OnboardingPage(
                     title: 'Esperá tu delivery',
                     textContent:
                         'Nuestros deliverys te lo alcanzarán sin costo de envío a tu domicilio',
                     selectedIndex: selectedIndex,
-                    assetName: 'assets/images/onboarding_2.svg',
+                    assetName: 'assets/images/onboarding_2.png',
                   ),
                   _OnboardingPage(
                     title: 'Disfrutá la comida',
                     textContent: 'Disfrutá de nuestras pizzas en familia',
                     selectedIndex: selectedIndex,
-                    assetName: 'assets/images/onboarding_3.svg',
+                    assetName: 'assets/images/onboarding_3.png',
                   ),
                 ],
               ),
@@ -137,7 +136,7 @@ class _OnboardingPage extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 60, 16, 0),
           child: Text(title, style: AppTextStyles.h1),
         ),
-        Expanded(child: SvgPicture.asset(assetName)),
+        Expanded(child: Image.asset(assetName)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 48),
           child: Text(
