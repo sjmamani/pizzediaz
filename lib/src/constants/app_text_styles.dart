@@ -18,6 +18,21 @@ abstract class AppTextStyles {
     letterSpacing: 0.5,
   );
 
+  static const TextStyle h4 = TextStyle(
+    fontFamily: primaryFontFamily,
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0.16,
+  );
+
+  static const TextStyle h5 = TextStyle(
+    fontFamily: primaryFontFamily,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.16,
+    height: 1.5,
+  );
+
   static const TextStyle paragraph = TextStyle(
     fontFamily: secondaryFontFamily,
     fontSize: 16,

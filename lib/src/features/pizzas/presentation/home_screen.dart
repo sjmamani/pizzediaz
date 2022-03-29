@@ -1,67 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pizzediaz/src/common_widgets/secondary_action_button.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pizzediaz/src/constants/app_colors.dart';
 import 'package:pizzediaz/src/constants/app_text_styles.dart';
 import 'package:pizzediaz/src/constants/box_shadows.dart';
+import 'package:pizzediaz/src/features/pizzas/presentation/components/header_home.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double logoDiameter = 136;
-    double height = MediaQuery.of(context).size.height;
-    double statusBarHeight = MediaQuery.of(context).viewPadding.top;
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ClipPath(
-              clipper: LoginClipPath(),
-              child: Stack(
-                children: [
-                  Container(
-                    color: AppColors.primaryColor,
-                    height: height * 0.3,
+            const HomeHeader(),
+            const SizedBox(height: 14),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text('Populares', style: AppTextStyles.h2),
+                  SizedBox(height: 8),
+                  PizzaCard(
+                    name: 'Muzzarella',
+                    description:
+                        'Masa casera con queso\nmuzzarella, salsa de tomate,\norégano y aceitunas frescas.',
+                    price: 400,
                   ),
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    top: height * 0.19 - (logoDiameter / 2),
-                    child: Container(
-                      width: logoDiameter,
-                      height: logoDiameter,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        shape: BoxShape.circle,
-                        boxShadow: [kBoxShadow],
-                      ),
-                      child:
-                          SvgPicture.asset('assets/images/pizzediaz_logo.svg'),
-                    ),
+                  PizzaCard(
+                    name: 'Fugazzeta',
+                    description:
+                        'Masa casera con queso\nmuzzarella, salsa de tomate,\ncebolla, orégano y aceitunas\nfrescas.',
+                    price: 400,
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsets.fromLTRB(16, statusBarHeight + 16, 16, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SecondaryActionButton(
-                            icon: Icons.menu, onPressed: () {}),
-                        Text(
-                          'Av. San José 1837',
-                          style: AppTextStyles.paragraph.copyWith(
-                            color: Colors.white,
-                          ),
-                        ),
-                        SecondaryActionButton(
-                          icon: Icons.notifications_outlined,
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
+                  PizzaCard(
+                    name: 'Calabresa',
+                    description:
+                        'Masa casera con queso\nmuzzarella, salsa de tomate,\nsalame picado grueso, orégano y\naceitunas frescas.',
+                    price: 400,
                   ),
                 ],
               ),
@@ -73,24 +52,61 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class LoginClipPath extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    double h = size.height;
-    double w = size.width;
+class PizzaCard extends StatelessWidget {
+  const PizzaCard({
+    Key? key,
+    required this.name,
+    required this.description,
+    required this.price,
+  }) : super(key: key);
 
-    final path = Path();
-
-    path.lineTo(0, h - 65);
-    path.quadraticBezierTo(w * 0.5, h + 65, w, h - 65);
-    path.lineTo(w, 0);
-    path.close();
-
-    return path;
-  }
+  final String name;
+  final String description;
+  final int price;
 
   @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return true;
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
+      margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [kBoxShadow],
+        color: AppColors.primaryColor,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            flex: 2,
+            child: SvgPicture.asset('assets/images/pizza.svg', height: 96),
+          ),
+          Expanded(
+            flex: 3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: AppTextStyles.h5.copyWith(color: Colors.white),
+                ),
+                Text(
+                  description,
+                  style: AppTextStyles.caption.copyWith(color: Colors.white),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    '\$$price',
+                    style: AppTextStyles.h4.copyWith(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
