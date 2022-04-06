@@ -14,39 +14,106 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            const HomeHeader(),
-            const SizedBox(height: 14),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text('Populares', style: AppTextStyles.h2),
-                  SizedBox(height: 8),
-                  PizzaCard(
-                    name: 'Muzzarella',
-                    description:
-                        'Masa casera con queso\nmuzzarella, salsa de tomate,\norégano y aceitunas frescas.',
-                    price: 400,
-                  ),
-                  PizzaCard(
-                    name: 'Fugazzeta',
-                    description:
-                        'Masa casera con queso\nmuzzarella, salsa de tomate,\ncebolla, orégano y aceitunas\nfrescas.',
-                    price: 400,
-                  ),
-                  PizzaCard(
-                    name: 'Calabresa',
-                    description:
-                        'Masa casera con queso\nmuzzarella, salsa de tomate,\nsalame picado grueso, orégano y\naceitunas frescas.',
-                    price: 400,
-                  ),
-                ],
+          children: const [
+            HomeHeader(),
+            SizedBox(height: 14),
+            _HomePizzaList(title: 'Populares'),
+            _HomePizzaList(title: 'Especiales'),
+          ],
+        ),
+      ),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              label: '',
+              icon: const Icon(Icons.favorite),
+              activeIcon: Column(
+                children: const [Icon(Icons.favorite), _NavbarDot()],
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: const Icon(Icons.home),
+              activeIcon: Column(
+                children: const [Icon(Icons.home, size: 36), _NavbarDot()],
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: const Icon(Icons.shopping_cart),
+              activeIcon: Column(
+                children: const [Icon(Icons.shopping_cart), _NavbarDot()],
               ),
             ),
           ],
+          currentIndex: 1,
+          enableFeedback: true,
+          selectedItemColor: AppColors.primaryColor,
+          unselectedItemColor: AppColors.primaryColor.withOpacity(0.3),
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
         ),
+      ),
+    );
+  }
+}
+
+class _HomePizzaList extends StatelessWidget {
+  const _HomePizzaList({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: AppTextStyles.h2),
+          const SizedBox(height: 8),
+          const PizzaCard(
+            name: 'Muzzarella',
+            description:
+                'Masa casera con queso\nmuzzarella, salsa de tomate,\norégano y aceitunas frescas.',
+            price: 400,
+          ),
+          const PizzaCard(
+            name: 'Fugazzeta',
+            description:
+                'Masa casera con queso\nmuzzarella, salsa de tomate,\ncebolla, orégano y aceitunas\nfrescas.',
+            price: 400,
+          ),
+          const PizzaCard(
+            name: 'Calabresa',
+            description:
+                'Masa casera con queso\nmuzzarella, salsa de tomate,\nsalame picado grueso, orégano y\naceitunas frescas.',
+            price: 400,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _NavbarDot extends StatelessWidget {
+  const _NavbarDot({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 4,
+      width: 4,
+      decoration: const BoxDecoration(
+        color: AppColors.primaryColor,
+        shape: BoxShape.circle,
       ),
     );
   }
