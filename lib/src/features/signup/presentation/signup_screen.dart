@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pizzediaz/src/common_widgets/main_button_widget.dart';
+import 'package:pizzediaz/src/common_widgets/main_button.dart';
 import 'package:pizzediaz/src/common_widgets/secondary_action_button.dart';
 import 'package:pizzediaz/src/constants/app_colors.dart';
 import 'package:pizzediaz/src/constants/app_text_styles.dart';

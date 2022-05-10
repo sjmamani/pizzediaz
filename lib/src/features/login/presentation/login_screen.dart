@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pizzediaz/src/common_widgets/main_button_widget.dart';
+import 'package:pizzediaz/src/common_widgets/main_button.dart';
 import 'package:pizzediaz/src/constants/app_colors.dart';
 import 'package:pizzediaz/src/constants/app_text_styles.dart';
 import 'package:pizzediaz/src/constants/box_shadows.dart';
